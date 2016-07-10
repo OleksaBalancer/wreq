@@ -1,0 +1,73 @@
+﻿@model wreq.Models.ViewModels.SoilTypeViewModel
+
+@{
+    ViewBag.Title = @Resource.Delete;
+}
+
+<h2>@Resource.Delete</h2>
+
+<h3>@Resource.DeleteConfirm</h3>
+<div>
+    <h4>@Resource.SoilType</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FieldWaterCapacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FieldWaterCapacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WiltWaterCapacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WiltWaterCapacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReadilyEvaporableWater)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReadilyEvaporableWater) @Resource.UnitMilimeter
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalEvaporableWater)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalEvaporableWater) @Resource.UnitMilimeter
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="form-actions no-color">
+            <input type="submit" value="@Resource.Delete" class="btn btn-default" /> |
+            @Html.ActionLink(Resource.Back, "Index")
+        </div>
+    }
+</div>

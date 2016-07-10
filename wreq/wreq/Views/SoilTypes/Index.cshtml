@@ -1,0 +1,25 @@
+﻿@using Microsoft.AspNet.Identity;
+@model IEnumerable<wreq.Models.ViewModels.SoilTypeListViewModel>
+@{
+    ViewBag.Title = Resource.SoilTypes;
+}
+
+<h2>@Resource.SoilTypes</h2>
+<table>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Name, "Details", new { id = item.Id })
+            </td>
+            <td>
+               @if (item.AuthorId == User.Identity.GetUserId() || User.IsInRole("Admin")) //todo move admin role name to config
+               { 
+                @Html.ActionLink(Resource.Edit, "Edit", new { id = item.Id }) <span>|</span>
+                @Html.ActionLink(Resource.Delete, "Delete", new { id = item.Id })
+                }
+            </td>
+        </tr>
+    }
+</table>
+@Html.ActionLink(Resource.AddNew, "Create")

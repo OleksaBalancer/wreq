@@ -1,0 +1,27 @@
+﻿@model IEnumerable<wreq.Models.ViewModels.CropListViewModel>
+@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = Resource.Index;
+}
+
+<h2>@Resource.Crops</h2>
+
+<table>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Name, "Details", new { id = item.Id })
+            </td>
+            <td>
+                @if (item.AuthorId == User.Identity.GetUserId() || User.IsInRole("Admin"))
+                {
+                    @Html.ActionLink(Resource.Edit, "Edit", new { id = item.Id }) <span>|</span>
+                    @Html.ActionLink(@Resource.Delete, "Delete", new { id = item.Id })
+                }
+            </td>
+        </tr>
+    }
+</table>
+@Html.ActionLink(Resource.AddNew, "Create")

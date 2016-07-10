@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wreq", "wreq\wreq.csproj", "{F8E23C55-93BB-4D29-9470-9ABFBD6BFC40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wreq.Tests", "wreq.Tests\wreq.Tests.csproj", "{C8FF5BFB-0B90-4019-B230-99AB844F44E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F8E23C55-93BB-4D29-9470-9ABFBD6BFC40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8E23C55-93BB-4D29-9470-9ABFBD6BFC40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8E23C55-93BB-4D29-9470-9ABFBD6BFC40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8E23C55-93BB-4D29-9470-9ABFBD6BFC40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8FF5BFB-0B90-4019-B230-99AB844F44E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8FF5BFB-0B90-4019-B230-99AB844F44E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8FF5BFB-0B90-4019-B230-99AB844F44E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8FF5BFB-0B90-4019-B230-99AB844F44E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,127 @@
+﻿@model wreq.Models.ViewModels.CultureViewModel
+@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = Resource.Details;
+}
+
+<h2>@Resource.Details</h2>
+
+<div>
+    <h4>@Resource.Culture</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YieldCoefficient)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YieldCoefficient)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KcIni)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KcIni)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KcMid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KcMid)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KcEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KcEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LengthIni)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LengthIni) @Resource.UnitDays
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LengthDev)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LengthDev) @Resource.UnitDays
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LengthMid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LengthMid) @Resource.UnitDays
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LengthLate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LengthLate) @Resource.UnitDays
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxHeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxHeight) @Resource.UnitMeter
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxRootDepth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxRootDepth) @Resource.UnitMeter
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WaterExtraction)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WaterExtraction)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (Model.AuthorId == User.Identity.GetUserId() || User.IsInRole("Admin"))
+    {
+        @Html.ActionLink(Resource.Edit, "Edit", new { id = Model.Id })
+    }
+    
+    @Html.ActionLink(Resource.Back, "Index")
+</p>

@@ -1,0 +1,24 @@
+﻿@model wreq.Models.ViewModels.IrrigationsIndexViewModel
+
+@{
+    ViewBag.Title = Resource.Index;
+}
+
+<h2>@Resource.Irrigations</h2>
+
+<table>
+    @foreach (var item in Model.Irrigations)
+    {
+        <tr>
+            <td>
+                <span>@(item.Date.ToShortDateString() + " - " + item.Volume + " " + @Resource.UnitMeter)<sup>3</sup></span>
+            </td>
+            <td>
+                @Html.ActionLink(@Resource.Delete, "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink(Resource.Back, "Details", "Crops", new { id = Model.CropId }, null)
+</p>

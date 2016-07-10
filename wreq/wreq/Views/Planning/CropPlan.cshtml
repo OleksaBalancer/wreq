@@ -1,0 +1,106 @@
+﻿@model wreq.Models.ViewModels.PlanningViewModel
+@{
+    ViewBag.Title = Resource.CropPlan;
+}
+
+<h2>@Resource.CropPlan</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CropName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CropName)
+            </dd>
+        </dl>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateBegin, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateBegin, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DateBegin, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateEnd, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateEnd, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DateEnd, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(m => m.LengthIni)
+        @Html.HiddenFor(m => m.LengthDev)
+        @Html.HiddenFor(m => m.LengthMid)
+        @Html.HiddenFor(m => m.LengthLate)
+        @Html.HiddenFor(m => m.DateSeeded)
+
+
+
+
+        <span>@Resource.Irrigations</span>
+
+
+        @if (Model.Irrigations != null)
+        {
+            <div id="plans">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Resource.Date
+                        </th>
+                        <th>
+                            @Resource.Volume @Resource.UnitMeter<sup>3</sup>
+                        </th>
+                    </tr>
+                    @foreach (var item in Model.Irrigations)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Volume)
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td>
+                            @(Resource.Total + ":")
+                        </td>
+                        <td>
+                            @Model.Irrigations.Sum(x => x.Volume).ToString("#.##")
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.YieldReduction)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.YieldReduction)<span>%</span>
+                </dd>
+            </dl>
+        }
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value=@Resource.GetPlans class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink(Resource.Back, "Details", "Crops", new { id = Model.CropId }, null)
+    </p>
+}
+

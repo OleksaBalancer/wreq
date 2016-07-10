@@ -1,0 +1,99 @@
+﻿@model wreq.Models.ViewModels.CropViewModel
+@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = Resource.Details;
+}
+
+<h2>@Resource.Details</h2>
+
+<div>
+    <h4>@Resource.Crop</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.CultureName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CultureName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FieldName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FieldName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateSeeded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateSeeded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LengthIni)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LengthIni) @Resource.UnitDays
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LengthDev)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LengthDev) @Resource.UnitDays
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LengthMid)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LengthMid) @Resource.UnitDays
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LengthLate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LengthLate) @Resource.UnitDays
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+    </dl>
+</div>
+<p>
+    @if (Model.AuthorId == User.Identity.GetUserId() || User.IsInRole("Admin"))
+    {
+        @Html.ActionLink(Resource.Edit, "Edit", new { id = Model.Id })<br />
+        @Html.ActionLink(Resource.PlanIrrigations, "CropPlan", "Planning", new { cropId = Model.Id }, null)<br />
+        @Html.ActionLink(Resource.AddIrrigation, "Create", "Irrigations", new { cropId = Model.Id }, null)<br />
+        @Html.ActionLink(Resource.ViewIrrigations, "Index", "Irrigations", new { cropId = Model.Id }, null)<br />
+        @Html.ActionLink(Resource.AddWaterLimit, "Create", "WaterLimits", new { cropId = Model.Id }, null)<br />
+        @Html.ActionLink(Resource.ViewWaterLimits, "Index", "WaterLimits", new { cropId = Model.Id }, null)<br />
+    }
+    
+    @Html.ActionLink(Resource.Back, "Index")
+</p>

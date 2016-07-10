@@ -1,0 +1,24 @@
+﻿@model wreq.Models.ViewModels.WaterLimitsIndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@Resource.WaterLimit</h2>
+
+<table>
+    @foreach (var item in Model.WaterLimits)
+    {
+        <tr>
+            <td>
+                <span>@(item.DateBegin.ToShortDateString() + "-" + item.DateEnd.ToShortDateString() + " - " + item.Volume + " " + @Resource.UnitMeter)<sup>3</sup></span>
+            </td>
+            <td>
+                @Html.ActionLink(Resource.Delete, "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    @Html.ActionLink(Resource.Back, "Details", "Crops", new { id = Model.CropId }, null)
+</p>

@@ -1,0 +1,49 @@
+﻿@model wreq.Models.ViewModels.WaterLimitViewModel
+
+@{
+    ViewBag.Title = @Resource.Delete;
+}
+
+<h2>@Resource.Delete</h2>
+
+<h3>@Resource.DeleteConfirm</h3>
+<div>@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateBegin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateBegin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateEnd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateEnd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Volume)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Volume) @Resource.UnitMeter<sup>3</sup>
+        </dd>
+
+    </dl>
+    @Html.HiddenFor(model => model.CropId)
+
+
+
+        <div class="form-actions no-color">
+            <input type="submit" value=@Resource.Delete class="btn btn-default" /> |
+            @Html.ActionLink(Resource.Back, "Details", "Crops", new { id = Model.CropId }, null)
+        </div>
+    }
+</div>

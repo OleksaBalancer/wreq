@@ -1,0 +1,68 @@
+﻿@model wreq.Models.ViewModels.SoilTypeViewModel
+@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = Resource.Details;
+}
+<h2>@Resource.Details</h2>
+
+<div>
+    <h4>@Resource.SoilType</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FieldWaterCapacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FieldWaterCapacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WiltWaterCapacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WiltWaterCapacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReadilyEvaporableWater)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReadilyEvaporableWater) @Resource.UnitMilimeter
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalEvaporableWater)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalEvaporableWater) @Resource.UnitMilimeter
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (Model.AuthorId == User.Identity.GetUserId() || User.IsInRole("Admin"))
+    {
+        @Html.ActionLink(Resource.Edit, "Edit", new { id = Model.Id })     
+    }
+    @Html.ActionLink(Resource.Back, "Index")
+</p>
